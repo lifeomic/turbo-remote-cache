@@ -1,5 +1,10 @@
 # turbo remote cache
 
+A remote cache server backed by S3.
+
+This server is designed to run within a CI environment where it already has
+access to a S3 bucket. So no authentication yet.
+
 ## server
 
 reference:
@@ -12,6 +17,20 @@ https://api.vercel.com/v8/artifacts/09b4848294e347d8?teamID=team_lMDgmODIeVfSbCQ
 ```
 
 authentication over bearer token.
+
+### configuration
+
+* AWS access is either assumed or exists already. it will perform `s3:GetObject`
+and `s3:PutObject` actions.
+* configure s3 bucket name via environment variable `STORAGE_PATH`:
+  ```
+  STORAGE_PATH=my-turbo-cache-storage
+  AWS_REGION=us-east-1
+  ```
+
+Run `yarn build` then `yarn start`.
+
+If you want to change the TCP port, update `bin/start_server.ts`.
 
 ### data model
 
