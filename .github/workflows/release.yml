@@ -29,6 +29,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.LIFEOMIC_NPM_TOKEN }}
         run: |
           yarn build
-          npx semantic-release
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          npm token list
+          npx semantic-release
           npm access grant read-only lifeomic:readonly-developers '@lifeomic/turbo-remote-cache'
