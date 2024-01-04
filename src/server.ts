@@ -1,4 +1,4 @@
-import Koa, { Context } from 'koa';
+import Koa, { Context, type Next } from 'koa';
 import Router from '@koa/router';
 import {
   S3Client,
@@ -15,7 +15,7 @@ const logger = debug('turbo-remote-cache');
 const BUCKET_NAME = process.env.STORAGE_PATH;
 const awsErrorCodesForNotFound = ['NoSuchBucket', 'NoSuchKey'];
 
-const validateReq = (hash: string, ctx: Context, next: any) => {
+const validateReq = (hash: string, ctx: Context, next: Next) => {
   const teamId = ctx.query.slug;
 
   if (!teamId) {
@@ -80,7 +80,7 @@ const saveArtifact = async (ctx: Context) => {
  * @param ctx
  * @param next
  */
-const handleEvents = (ctx: Context, next: any) => {
+const handleEvents = (ctx: Context, next: Next) => {
   if (ctx.artifactId === 'events') {
     logger('post events', ctx.body);
   }
