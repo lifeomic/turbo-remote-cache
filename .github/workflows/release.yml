@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    environment: npm
+    env:
+      FORCE_COLOR: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test
+        run: |
+          yarn lint
+          yarn test
+      - name: Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.LIFEOMIC_NPM_TOKEN }}
+        run: |
+          yarn build
+          npx semantic-release
+          npm access grant read-only lifeomic:readonly-developers '@lifeomic/turbo-remote-cache'
