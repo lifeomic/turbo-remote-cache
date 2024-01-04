@@ -3,13 +3,22 @@
   "version": "0.0.0",
   "license": "MIT",
   "description": "remote cache server for turbo repo",
+  "bin": {
+    "start-turbo-cache-server": "dist/bin/start_server.js"
+  },
+  "files": [
+    "dist/bin/*",
+    "dist/src/*",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "pm2 start dist/bin/start_server.js --name turbo-cache",
     "stop": "pm2 stop turbo-cache",
     "ts-type-check": "",
     "clean": "rm -rf ./dist",
-    "lint": "eslint --cache --cache-location node_modules/.cache/.eslintcache --ext .ts,.tsx,.js,.jsx . --max-warnings 0",
+    "lint": "eslint --cache --cache-location node_modules/.cache/.eslintcache --ext .ts . --max-warnings 0",
     "prettier": "prettier",
     "test": "jest --silent"
   },
@@ -29,9 +38,11 @@
     "@typescript-eslint/parser": "^6.17.0",
     "aws-sdk-client-mock": "^3.0.0",
     "aws-sdk-client-mock-jest": "^3.0.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^8.56.0",
     "jest": "^29.7.0",
     "pm2": "^4.0.0",
+    "semantic-release": "^19.0.3",
     "supertest": "^6.3.3",
     "ts-node": "^8.0.2",
     "typescript": "^5.3.2"
