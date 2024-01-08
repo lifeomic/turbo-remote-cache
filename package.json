@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "description": "remote cache server for turbo repo",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "git@github.com:lifeomic/turbo-remote-cache.git",
   "bin": {
     "start-turbo-cache-server": "dist/bin/start_server.js"
   },

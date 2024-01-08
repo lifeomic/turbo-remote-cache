@@ -31,4 +31,3 @@ jobs:
           yarn build
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
           npx semantic-release
-          npm access grant read-only lifeomic:readonly-developers '@lifeomic/turbo-remote-cache'
