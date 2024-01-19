@@ -8,9 +8,12 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     environment: npm
     env:
       FORCE_COLOR: 1
+      NPM_CONFIG_PROVENANCE: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

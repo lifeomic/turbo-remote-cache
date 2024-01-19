@@ -6,7 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "git@github.com:lifeomic/turbo-remote-cache.git",
+  "repository": "https://github.com/lifeomic/turbo-remote-cache",
   "bin": {
     "start-turbo-cache-server": "dist/bin/start_server.js"
   },
